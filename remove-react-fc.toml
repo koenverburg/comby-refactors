@@ -1,0 +1,5 @@
+[remove-react-fc]
+
+match=": React.FC<:[type]>:[_](:[props])"
+
+rewrite=" = (:[props]: :[type])"
