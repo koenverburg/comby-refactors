@@ -1,0 +1,46 @@
+[react-class-to-functional-component]
+
+# Geven this as input this should rewrite it in a functional component
+
+#export class Example extends React.Component {
+#  componentDidMount() {
+#   // hii from componentDidMount
+#  }
+#  componentWillUnmount() {
+#   // hii from componentWillUnmount
+#  }
+#  render () {
+#    return (
+#      <div>
+#        This text is all that renders. And the modal is not rendered, regardless
+#        of whether it is contained within this div.
+#      </div>
+#    )
+#  }
+#}
+
+match='''
+class :[name] extends React.Component {
+  componentDidMount() {
+    :[mount]
+  }
+  componentWillUnmount() {
+    :[unmount]
+  }
+  render () {
+   return (:[jsx])
+  }
+}
+'''
+
+rewrite='''
+export const :[name] = () => {
+  React.useEffect(() => {
+    :[mount]
+    return () => {
+      :[unmount]
+    }
+  }, [])
+  return (:[jsx])
+}
+'''
