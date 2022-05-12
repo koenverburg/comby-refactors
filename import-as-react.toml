@@ -1,0 +1,5 @@
+[correct-react-import]
+
+match="import React"
+
+rewrite="import * as React"
